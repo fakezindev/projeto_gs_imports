@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Faça seu registro</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="login-container">
+        <a href="home.html">
+            <img src="GS IMPORTS.jpg" height="80" class="center-image">
+        </a>
+        <h2>Registre-se</h2>
+        <form id="register-form" action="grava.jsp" method="post">
+            <div class="input-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="last-name">Sobrenome:</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="e-mail">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+
+            <button type="submit">Criar conta</button>
+        </form>
+        <a href="login.html">
+            <button type="button" class="voltar-button">Voltar</button>
+        </a>
+    </div>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            const name = document.getElementById('name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (name.length < 2) {
+                alert('O nome deve ter pelo menos 2 caracteres.');
+                event.preventDefault();
+                return;
+            }
+
+            if (lastName.length < 2) {
+                alert('O sobrenome deve ter pelo menos 2 caracteres.');
+                event.preventDefault();
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Por favor, insira um e-mail válido.');
+                event.preventDefault();
+                return;
+            }
+
+            if (password.length < 8 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
+                alert('A senha deve ter pelo menos 8 caracteres, incluindo letras e números.');
+                event.preventDefault();
+                return;
+            }
+
+        });
+    </script>
+</body>
+</html>
